@@ -1,0 +1,12 @@
+
+> furniture-showroom@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 33.4s (2589 modules)
+ GET / 200 in 128ms
