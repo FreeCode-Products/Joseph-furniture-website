@@ -1,1 +1,24 @@
-^C^C
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'F:\Joseph_furniture_website\.next\server\app\page.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/page' in F:\Joseph_furniture_website\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'F:\Joseph_furniture_website\.next\server\app\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/page' in 'F:\Joseph_furniture_website\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/page (expected F:\Joseph_furniture_website\.next\server\app\page.js)
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\server\require.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\server\require.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\server\load-components.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\build\utils.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\build\utils.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\build\swc\index.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs F:\Joseph_furniture_website\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
