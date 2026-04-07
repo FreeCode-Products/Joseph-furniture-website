@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { getProductBySlug, products } from "@/lib/products";
@@ -268,22 +269,15 @@ export default function ProductDetailPage() {
                 >
                   <Link href={`/products/${rp.slug}`} className="group block">
                     <div className="bg-gradient-to-br from-sand/30 to-bone rounded-2xl overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
-                      <div className="h-48 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-xl bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                          <svg
-                            className="w-10 h-10 text-charcoal/20"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                            />
-                          </svg>
-                        </div>
+                      <div className="relative h-48">
+                        <Image
+                          src={rp.imagePath}
+                          alt={rp.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent" />
                       </div>
                       <div className="p-5">
                         <p className="text-xs text-charcoal/40 uppercase tracking-wider mb-1">

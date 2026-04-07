@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { getFeaturedProducts } from "@/lib/products";
 
@@ -98,23 +99,15 @@ export default function FeaturedSection() {
               {/* Decorative shape */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-white/20" />
 
-              {/* Product visual placeholder */}
-              <div className="relative flex-1 flex items-center justify-center">
-                <div className="w-40 h-40 md:w-52 md:h-52 rounded-2xl bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                  <svg
-                    className="w-16 h-16 text-charcoal/30"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  </svg>
-                </div>
+              <div className="relative flex-1 rounded-2xl overflow-hidden">
+                <Image
+                  src={product.imagePath}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 400px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
               </div>
 
               {/* Info */}

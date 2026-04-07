@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { products, categories } from "@/lib/products";
 import { Badge } from "@/components/ui/badge";
@@ -144,23 +145,16 @@ export default function ProductsPage() {
                           cardColors[i % cardColors.length]
                         } rounded-2xl overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]`}
                       >
-                        {/* Image placeholder */}
-                        <div className="relative h-56 flex items-center justify-center">
-                          <div className="w-28 h-28 rounded-xl bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                            <svg
-                              className="w-12 h-12 text-charcoal/20"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={1}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                              />
-                            </svg>
-                          </div>
+                        <div className="relative h-56">
+                          <Image
+                            src={product.imagePath}
+                            alt={product.name}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            priority={i < 3}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 to-transparent" />
                           {product.featured && (
                             <Badge className="absolute top-4 left-4 bg-walnut text-white hover:bg-walnut">
                               Featured

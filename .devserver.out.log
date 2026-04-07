@@ -25,3 +25,57 @@
  ✓ Compiled / in 6.9s (730 modules)
  ○ Compiling /_not-found ...
  ✓ Compiled /_not-found in 1446ms (1424 modules)
+ GET / 404 in 9930ms
+ GET /_next/static/css/app/layout.css?v=1774956934362 404 in 206ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 261ms
+ GET /_next/static/chunks/main-app.js?v=1774956934362 404 in 271ms
+ GET /_next/static/chunks/app/layout.js 404 in 268ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 824ms (763 modules)
+ GET /favicon.ico 200 in 1234ms
+ GET / 200 in 662ms
+ GET /_next/static/css/app/layout.css?v=1774956944639 404 in 318ms
+ GET /_next/static/chunks/main-app.js?v=1774956944639 404 in 418ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 419ms
+ GET /_next/static/chunks/app/page.js 404 in 326ms
+ GET /_next/static/chunks/app/layout.js 404 in 90ms
+ GET /favicon.ico 200 in 29ms
+ GET / 200 in 136ms
+ GET /_next/static/css/app/layout.css?v=1774956970927 404 in 220ms
+ GET /_next/static/chunks/main-app.js?v=1774956970927 404 in 289ms
+ GET /_next/static/chunks/app/page.js 404 in 287ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 291ms
+ GET /_next/static/chunks/app/layout.js 404 in 74ms
+ GET /favicon.ico 200 in 32ms
+ ✓ Compiled in 1495ms (707 modules)
+ ✓ Compiled in 946ms (707 modules)
+ ✓ Compiled in 1744ms (707 modules)
+ ✓ Compiled in 17s (1291 modules)
+ GET / 200 in 2831ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 11.6s (2574 modules)
+ GET /_next/static/css/app/layout.css?v=1774957040113 404 in 14162ms
+ GET /_next/static/chunks/main-app.js?v=1774957040113 404 in 14165ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 14165ms
+ ✓ Compiled /favicon.ico in 486ms (1330 modules)
+ GET /favicon.ico 200 in 876ms
+ GET / 200 in 899ms
+ GET /_next/static/css/app/layout.css?v=1774957081746 404 in 249ms
+ GET /_next/static/chunks/main-app.js?v=1774957081746 404 in 288ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 288ms
+ GET /favicon.ico 200 in 21ms
+ GET / 200 in 1001ms
+ GET /_next/static/css/app/layout.css?v=1774957110710 404 in 265ms
+ GET /_next/static/chunks/main-app.js?v=1774957110710 404 in 400ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 401ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 926ms
+ GET /_next/static/css/app/layout.css?v=1774957110710 404 in 470ms
+ GET /_next/static/chunks/app/LayoutGroupContext.mjs.map 404 in 66ms
+ GET /_next/static/chunks/app/LayoutGroupContext.mjs.map 404 in 50ms
+ GET /favicon.ico 200 in 34ms
+ ✓ Compiled in 10.5s (1274 modules)
+ ✓ Compiled in 5s (1274 modules)
+ ✓ Compiled in 840ms (1274 modules)
+ ✓ Compiled in 1571ms (1274 modules)
+Terminate batch job (Y/N)? 
+[?25h
