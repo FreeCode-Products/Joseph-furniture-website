@@ -1,25 +1,38 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories } from "@/lib/products";
 import { Separator } from "@/components/ui/separator";
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
+];
 
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 sm:gap-8 md:gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-sand flex items-center justify-center">
-                <span className="text-charcoal text-sm font-bold">N</span>
+            <div className="flex items-start sm:items-center gap-2">
+              <div className="w-12 h-12 rounded-lg bg-white/95 p-1.5 flex items-center justify-center overflow-hidden shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Elshaddai Furnitures Logo"
+                  width={44}
+                  height={44}
+                  className="object-contain w-full h-full"
+                />
               </div>
-              <span className="text-xl font-heading font-semibold text-white">
-                Nörd
+              <span className="text-lg sm:text-xl font-heading font-semibold text-white leading-tight">
+                Elshaddai Furnitures
               </span>
             </div>
             <p className="text-sm leading-relaxed text-white/60">
-              Curated Scandinavian furniture for modern living. Designed with
-              purpose, crafted with care.
+              Manufacturers in premium teak/country wood wooden cots, sofas, dining tables, teapoy, and other handcrafted furniture.
             </p>
           </div>
 
@@ -29,13 +42,13 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {["Home", "Products", "About", "Contact"].map((link) => (
-                <li key={link}>
+              {quickLinks.map((link) => (
+                <li key={link.label}>
                   <Link
-                    href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                    href={link.href}
                     className="text-sm text-white/60 hover:text-sand transition-colors"
                   >
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -66,10 +79,9 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
               Get in Touch
             </h4>
-            <div className="space-y-2 text-sm text-white/60">
-              <p>hello@nord-furniture.com</p>
-              <p>+46 8 123 456 789</p>
-              <p>Storgatan 12, Stockholm</p>
+            <div className="space-y-2 text-sm text-white/60 break-words">
+              <p>+91 99414 84295</p>
+              <p>No-11/21, 2nd Avenue, Ashok Nagar, Chennai-600083</p>
             </div>
             <div className="flex gap-4 pt-2">
               {/* Social icons (simple SVG) */}
@@ -100,8 +112,8 @@ export default function Footer() {
         <Separator className="my-8 bg-white/10" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} Nörd Furniture. All rights reserved.</p>
-          <div className="flex gap-6">
+          <p>&copy; {new Date().getFullYear()} Elshaddai Furnitures. All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <Link href="#" className="hover:text-white/60 transition-colors">
               Privacy Policy
             </Link>

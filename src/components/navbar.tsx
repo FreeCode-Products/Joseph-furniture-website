@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -34,18 +35,22 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-walnut flex items-center justify-center">
-            <span className="text-white text-sm font-bold">N</span>
-          </div>
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+          <Image 
+            src="/logo.png" 
+            alt="Elshaddai Furnitures Logo" 
+            width={56} 
+            height={56} 
+            className="object-contain w-10 h-10 sm:w-14 sm:h-14 shrink-0" 
+          />
           <span
             className={`text-xl font-heading font-semibold tracking-tight transition-colors ${
               scrolled ? "text-charcoal" : "text-charcoal"
-            }`}
+            } text-base sm:text-xl truncate max-w-[150px] sm:max-w-none`}
           >
-            Nörd
+            Elshaddai Furnitures
           </span>
         </Link>
 
@@ -73,8 +78,9 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex h-11 w-11 items-center justify-center flex-col gap-1.5 rounded-md"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <motion.span
             animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -101,7 +107,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="md:hidden bg-white/95 backdrop-blur-md border-t border-sand/30"
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
+            <div className="px-4 sm:px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.label}

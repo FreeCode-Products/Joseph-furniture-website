@@ -79,7 +79,7 @@ export default function FeaturesSection() {
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
           <p className="text-sm font-medium tracking-[0.3em] uppercase text-walnut/70">
-            Why Nörd
+            Why John
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-charcoal">
             Built Different

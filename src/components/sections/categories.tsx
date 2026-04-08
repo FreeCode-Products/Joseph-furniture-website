@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import { categories } from "@/lib/products";
@@ -62,14 +63,14 @@ export default function CategoriesSection() {
     <section ref={sectionRef} id="categories" className="py-20 sm:py-28 lg:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
-          <p className="text-sm font-medium tracking-[0.3em] uppercase text-walnut/70">
+        <div className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4">
+          <p className="text-[11px] sm:text-sm font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase text-walnut/70">
             Browse by Room
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-charcoal">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-heading font-bold text-charcoal">
             Find Your Style
           </h2>
-          <p className="text-lg text-charcoal/50 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-charcoal/50 max-w-2xl mx-auto">
             Explore our curated collections designed for every room in your home
           </p>
         </div>
@@ -88,14 +89,26 @@ export default function CategoriesSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
-                className={`relative bg-gradient-to-br ${categoryColors[i]} p-5 sm:p-6 lg:p-8 ${
-                  i === 0 ? "h-64 lg:h-72" : "h-56 lg:h-64"
+                className={`relative overflow-hidden p-5 sm:p-6 lg:p-8 ${
+                  i === 0 ? "h-60 sm:h-64 lg:h-72" : "h-52 sm:h-56 lg:h-64"
                 } flex flex-col justify-end`}
               >
+                <Image
+                  src={cat.image}
+                  alt={cat.name}
+                  fill
+                  priority={i < 2}
+                  sizes={i === 0 ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-br from-black/35 via-black/15 to-black/40" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${categoryColors[i]} opacity-30`} />
+
                 {/* Icon */}
-                <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
+                <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/40 backdrop-blur-sm flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-charcoal/60"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -114,16 +127,16 @@ export default function CategoriesSection() {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-heading font-bold text-charcoal mb-1">
+                  <h3 className="text-lg sm:text-2xl font-heading font-bold text-white mb-1 leading-tight">
                     {cat.name}
                   </h3>
-                  <p className="text-sm text-charcoal/60">{cat.description}</p>
+                  <p className="text-xs sm:text-sm text-white/85">{cat.description}</p>
                 </div>
 
                 {/* Arrow on hover */}
-                <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-charcoal flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <div className="absolute bottom-6 right-6 z-10 w-10 h-10 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   <svg
-                    className="w-4 h-4 text-white"
+                    className="w-4 h-4 text-charcoal"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

@@ -1,0 +1,7 @@
+ ⚠ Port 3000 is in use, trying 3001 instead.
+[Error: EPERM: operation not permitted, open 'F:\Joseph_furniture_website\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'F:\\Joseph_furniture_website\\.next\\trace'
+}

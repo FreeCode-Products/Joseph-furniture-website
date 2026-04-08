@@ -1,48 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const ModelViewer = dynamic(() => import("@/components/model-viewer"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-12 h-12 rounded-full border-2 border-sand border-t-walnut animate-spin" />
-    </div>
-  ),
-});
 
 const headingWords = ["Curated", "Furniture", "for", "Modern", "Living"];
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const modelContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current || !modelContainerRef.current) return;
-
-    const section = sectionRef.current;
-    const model = modelContainerRef.current;
-
-    const handleScroll = () => {
-      const rect = section.getBoundingClientRect();
-      const progress = Math.min(Math.max(-rect.top / (rect.height * 0.5), 0), 1);
-      model.style.opacity = String(1 - progress);
-      model.style.transform = `scale(${1 - progress * 0.2})`;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-cream via-bone to-cream pt-20 sm:pt-24 pb-12"
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onLoadedData={(event) => {
+            event.currentTarget.playbackRate = 1.4;
+          }}
+          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-darken"
+        >
+          <source src="/6827347-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-white/20" />
+      </div>
+
       {/* Decorative grain overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -50,20 +36,19 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Content grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full grid lg:grid-cols-2 gap-8 items-center relative z-10">
-        {/* Left: Text */}
-        <div className="space-y-6 sm:space-y-8">
+      {/* Content */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <div className="space-y-6 sm:space-y-8 text-center">
           <div className="space-y-4">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm font-medium tracking-[0.3em] uppercase text-walnut/70"
+              className="text-[11px] sm:text-sm font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase text-black/75"
             >
-              Scandinavian Design Studio
+              Premium Furniture Manufacturers at Chennai
             </motion.p>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] text-charcoal">
+            <h1 className="text-[2.25rem] sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] text-black">
               {headingWords.map((word, i) => (
                 <motion.span
                   key={word}
@@ -86,17 +71,25 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="text-lg text-charcoal/60 max-w-md leading-relaxed"
+            className="text-base sm:text-lg text-black/70 max-w-2xl mx-auto leading-relaxed"
           >
-            Timeless pieces that blend form and function. Each item is built to
-            last, designed to inspire.
+            Premium teak and country wood cots, sofas, dining tables, teapoy, and other handcrafted furniture.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            className="text-sm sm:text-base text-black/75 font-medium px-2"
+          >
+            Trusted by customers across Chennai for quality craftsmanship.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="flex items-center gap-4"
+            className="flex items-center justify-center gap-4 flex-wrap"
           >
             <Link
               href="/products"
@@ -119,21 +112,11 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/#about"
-              className="text-charcoal/60 font-medium hover:text-walnut transition-colors"
+              className="text-black/75 font-medium hover:text-black transition-colors"
             >
               Our Story
             </Link>
           </motion.div>
-        </div>
-
-        {/* Right: 3D Model */}
-        <div ref={modelContainerRef} className="relative h-[280px] sm:h-[400px] lg:h-[600px]">
-          <ModelViewer
-            modelType="chair"
-            autoRotate
-            className="w-full h-full"
-            environmentPreset="apartment"
-          />
         </div>
       </div>
 
@@ -144,7 +127,7 @@ export default function HeroSection() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs tracking-widest uppercase text-charcoal/40">
+        <span className="text-xs tracking-widest uppercase text-black/50">
           Scroll
         </span>
         <motion.div
@@ -152,7 +135,7 @@ export default function HeroSection() {
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <svg
-            className="w-5 h-5 text-charcoal/40"
+            className="w-5 h-5 text-black/50"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

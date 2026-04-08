@@ -5,15 +5,18 @@ import { gsap } from "@/lib/gsap";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
-const WHATSAPP_NUMBER = "468123456789";
+const GOOGLE_MAPS_PLACE_URL =
+  "https://www.google.com/maps/place/Ashok+Pillar/@13.0348594,80.2095938,17z/data=!3m1!4b1!4m6!3m5!1s0x3a5267c15401afc1:0x7acc871dc8f94f13!8m2!3d13.0348542!4d80.2121687!16s%2Fg%2F11fm_s8wsj";
+const GOOGLE_MAPS_EMBED_URL =
+  "https://www.google.com/maps?q=13.0348542,80.2121687&z=17&output=embed";
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const fieldsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   useLayoutEffect(() => {
@@ -44,7 +47,7 @@ export default function ContactSection() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const whatsappMessage = `Hi, I'd like to get in touch!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const whatsappMessage = `Hi, I'd like to get in touch!\n\nName: ${name}\nMessage: ${message}`;
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`,
       "_blank",
@@ -82,7 +85,7 @@ export default function ContactSection() {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto"
+          className="grid grid-cols-1 gap-4 sm:gap-6 max-w-2xl mx-auto"
         >
           <div ref={(el) => { fieldsRef.current[0] = el; }}>
             <label className="block text-sm text-white/60 mb-2">Name</label>
@@ -95,20 +98,8 @@ export default function ContactSection() {
               className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-sand/50 h-12"
             />
           </div>
-          <div ref={(el) => { fieldsRef.current[1] = el; }}>
-            <label className="block text-sm text-white/60 mb-2">Email</label>
-            <Input
-              type="email"
-              placeholder="your@email.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-sand/50 h-12"
-            />
-          </div>
           <div
-            ref={(el) => { fieldsRef.current[2] = el; }}
-            className="md:col-span-2"
+            ref={(el) => { fieldsRef.current[1] = el; }}
           >
             <label className="block text-sm text-white/60 mb-2">Message</label>
             <Textarea
@@ -121,8 +112,7 @@ export default function ContactSection() {
             />
           </div>
           <div
-            ref={(el) => { fieldsRef.current[3] = el; }}
-            className="md:col-span-2"
+            ref={(el) => { fieldsRef.current[2] = el; }}
           >
             <Button
               type="submit"
@@ -136,6 +126,37 @@ export default function ContactSection() {
             </Button>
           </div>
         </form>
+
+        <div
+          ref={(el) => {
+            fieldsRef.current[3] = el;
+          }}
+          className="mt-10 sm:mt-12 max-w-4xl mx-auto"
+        >
+          <p className="text-sm font-medium tracking-[0.25em] uppercase text-sand/70 mb-3 text-center">
+            Visit Us
+          </p>
+          <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+            <iframe
+              title="Joseph Furniture Location on Google Maps"
+              src={GOOGLE_MAPS_EMBED_URL}
+              className="w-full h-[320px] sm:h-[380px] md:h-[420px]"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <div className="mt-4 text-center">
+            <a
+              href={GOOGLE_MAPS_PLACE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center text-sm text-sand hover:text-white transition-colors duration-300"
+            >
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -18,10 +18,21 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Nörd — Scandinavian Furniture Showroom",
+  title: "Elshaddai Furnitures",
   description:
-    "Curated Scandinavian furniture for modern living. Timeless designs crafted with sustainable materials and artisan quality.",
+    "Manufacturers in premium teak/country wood wooden cots, sofas, dining tables, teapoy, and other handcrafted furniture.",
   keywords: ["furniture", "scandinavian", "design", "modern", "sustainable"],
+  icons: {
+    icon: "/favicon.ico?v=2",
+    shortcut: "/favicon.ico?v=2",
+    apple: "/apple-touch-icon.png?v=2",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

@@ -10,7 +10,7 @@ const testimonials = [
     role: "Interior Designer",
     location: "Stockholm",
     quote:
-      "Nörd furniture has become my go-to recommendation for clients seeking that perfect balance of form and function. The quality is unmatched.",
+      "John furniture has become my go-to recommendation for clients seeking that perfect balance of form and function. The quality is unmatched.",
     rating: 5,
   },
   {
@@ -37,7 +37,7 @@ const testimonials = [
     role: "Creative Director",
     location: "Helsinki",
     quote:
-      "My studio desk from Nörd transformed my work-from-home setup. Clean lines, great cable management, and solid as a rock.",
+      "My studio desk from John transformed my work-from-home setup. Clean lines, great cable management, and solid as a rock.",
     rating: 5,
   },
 ];
