@@ -243,6 +243,20 @@ export const products: Product[] = [
     featured: false,
   },
   {
+    slug: "wooden-bed",
+    name: "Wooden Bed",
+    category: "Wooden Cots",
+    categorySlug: "wooden-cots",
+    price: 29999,
+    description:
+      "A solid wooden bed with a clean profile and sturdy build, crafted for lasting everyday comfort.",
+    dimensions: '78" L x 60" W x 36" H',
+    material: "Solid wood",
+    colors: ["Natural", "Walnut Brown"],
+    imagePath: "/images/products/wooden-bed.jpeg",
+    featured: false,
+  },
+  {
     slug: "drift-dresser",
     name: "Premium Panel Wooden Cot",
     category: "Other Furniture Crafted by Us",
