@@ -24,7 +24,7 @@ export function buildProductWhatsAppUrl(
 ): string {
   const includeSpecs = options.includeSpecs ?? false;
   const imageUrl = toAbsoluteUrl(product.imagePath, options.origin);
-  const productUrl = toAbsoluteUrl(`/products/${product.slug}`, options.origin);
+  const productUrl = toAbsoluteUrl(`/products/view?slug=${product.slug}`, options.origin);
 
   const lines = [
     "Hi, I'm interested in this product:",

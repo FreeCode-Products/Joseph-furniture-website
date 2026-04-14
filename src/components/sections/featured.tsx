@@ -95,7 +95,7 @@ export default function FeaturedSection() {
         {featuredProducts.map((product, i) => (
           <Link
             key={product.slug}
-            href={`/products/${product.slug}`}
+            href={`/products/view?slug=${product.slug}`}
             className="flex-shrink-0 group"
           >
             <div

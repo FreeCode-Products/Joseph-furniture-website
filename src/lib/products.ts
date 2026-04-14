@@ -9,6 +9,7 @@ export interface Product {
   material: string;
   colors: string[];
   imagePath: string;
+  gallery?: string[];
   featured: boolean;
 }
 

@@ -5,7 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { products, categories } from "@/lib/products";
+import { categories } from "@/lib/products";
+import {
+  DbProduct,
+  fetchAllProducts,
+  SortKey,
+  sortProducts,
+} from "@/lib/products-db";
 import { Badge } from "@/components/ui/badge";
 import { buildProductWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -23,9 +29,21 @@ function ProductsPageContent() {
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [origin, setOrigin] = useState("");
+  const [allProducts, setAllProducts] = useState<DbProduct[]>([]);
+  const [sortKey, setSortKey] = useState<SortKey>("newest");
 
   useEffect(() => {
     setOrigin(window.location.origin);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchAllProducts().then((list) => {
+      if (!cancelled) setAllProducts(list);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -54,10 +72,11 @@ function ProductsPageContent() {
   }, [pathname, router, searchParams]);
 
   const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
-      return selectedCategory === "all" || p.categorySlug === selectedCategory;
-    });
-  }, [selectedCategory]);
+    const filtered = allProducts.filter(
+      (p) => selectedCategory === "all" || p.categorySlug === selectedCategory
+    );
+    return sortProducts(filtered, sortKey);
+  }, [allProducts, selectedCategory, sortKey]);
 
   return (
     <div className="min-h-screen bg-cream pt-28 pb-20">
@@ -149,10 +168,24 @@ function ProductsPageContent() {
 
           {/* Product grid */}
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 gap-3">
               <p className="text-sm text-charcoal/50">
                 {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""}
               </p>
+              <label className="text-xs text-charcoal/60 inline-flex items-center gap-2">
+                Sort
+                <select
+                  value={sortKey}
+                  onChange={(e) => setSortKey(e.target.value as SortKey)}
+                  className="border border-charcoal/15 bg-white rounded-md px-2 py-1 text-xs"
+                >
+                  <option value="newest">Newest</option>
+                  <option value="featured">Featured first</option>
+                  <option value="price-asc">Price: low to high</option>
+                  <option value="price-desc">Price: high to low</option>
+                  <option value="name-asc">Name A–Z</option>
+                </select>
+              </label>
             </div>
 
             <motion.div
@@ -170,7 +203,7 @@ function ProductsPageContent() {
                     transition={{ duration: 0.4, delay: i * 0.05 }}
                   >
                     <Link
-                      href={`/products/${product.slug}`}
+                      href={`/products/view?slug=${product.slug}`}
                       className="group block"
                     >
                       <div
