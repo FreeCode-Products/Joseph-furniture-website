@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { buildProductWhatsAppUrl } from "@/lib/whatsapp";
 import { fetchAllProducts, DbProduct } from "@/lib/products-db";
+import { useProductSchema, usePageMeta } from "@/lib/seo-client";
 
 export default function ProductDetailPageClient({
   slug,
@@ -41,6 +42,14 @@ export default function ProductDetailPageClient({
       cancelled = true;
     };
   }, []);
+
+  // SEO: Add product schema and update page meta
+  useProductSchema(product || undefined);
+  usePageMeta(
+    product?.name || "Product",
+    product?.description || "Browse our furniture collection",
+    product ? origin + product.imagePath : undefined
+  );
 
   if (!product) {
     return (

@@ -14,6 +14,7 @@ import {
 } from "@/lib/products-db";
 import { Badge } from "@/components/ui/badge";
 import { buildProductWhatsAppUrl } from "@/lib/whatsapp";
+import { generateBreadcrumbSchema, SEO_CONSTANTS } from "@/lib/seo";
 
 const cardColors = [
   "bg-gradient-to-br from-sand/30 to-bone",
